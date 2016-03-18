@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static spark.Spark.exception;
 import static spark.Spark.get;
@@ -33,8 +34,18 @@ public class Main {
 
 			List<Movie> movies = new ArrayList<Movie>();
 
+			//Obtain the mysql service address
+			Map<String, String> env = System.getenv();
+			String mysqlHost = env.get("MYSQL_SERVICE_HOST");
+			String mysqlPort = env.get("MYSQL_SERVICE_PORT");
+			String mysqlUser = env.get("DB_USER_NAME");
+			String mysqlPassword = env.get("DB_USER_PASSWORD");
+			StringBuilder connectionUrl = new StringBuilder();
+			connectionUrl.append("jdbc:mysql://").append(mysqlHost).append(":").append(mysqlPort)
+						 .append("/test?user=").append(mysqlUser).append("&password=").append(mysqlPassword);
+
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			Connection connection = DriverManager.getConnection("jdbc:mysql://172.17.0.4/test?user=testuser&password=1234");
+			Connection connection = DriverManager.getConnection(connectionUrl.toString());
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("select * from movies");
 

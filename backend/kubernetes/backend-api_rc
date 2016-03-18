@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: backend-api
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: backend-api
+    spec:
+      containers:
+      - name: backend-api
+        image: eu.gcr.io/demokubernetes/backend-api:latest
+        ports:
+        - containerPort: 4567
+        env:
+          - name: MYSQL_RANDOM_ROOT_PASSWORD
+            value: dummyvalue
+          - name: DB_USER_NAME
+            value: testuser
+          - name: DB_USER_PASSWORD
+            value: "1234"
+          - name: MYSQL_SERVICE_HOST
+            value: 104.155.61.50
+          - name: MYSQL_SERVICE_PORT
+            value: "3306"
