@@ -36,8 +36,8 @@ public class Main {
 
 			//Obtain the mysql service address
 			Map<String, String> env = System.getenv();
-			String mysqlHost = env.get("MYSQL_SERVICE_HOST");
-			String mysqlPort = env.get("MYSQL_SERVICE_PORT");
+			String mysqlHost = "mysql";
+			String mysqlPort = "3306";
 			String mysqlUser = env.get("DB_USER_NAME");
 			String mysqlPassword = env.get("DB_USER_PASSWORD");
 			StringBuilder connectionUrl = new StringBuilder();

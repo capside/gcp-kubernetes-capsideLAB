@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$("#btnApiCall1").click(function(){
-	    $.get('http://localhost:8080')
+	    $.get('/api')
 	        .done(function(response){
 	            $("#panel1 .message").append(createAlert("success","<b>The message from the server is</b>: "+response));
 	        })
@@ -10,7 +10,7 @@ $(document).ready(function(){
     });
     $("#btnApiCall2").click(function(){
         var username = $("#txtNombre").val();
-        $.get(`http://localhost:8080/user/${username}`)
+        $.get(`/api/user/${username}`)
             .done(function(response){
                 $("#panel2 .message").append(createAlert("success","<b>The message from the server is</b>: "+response));
             })
@@ -20,7 +20,7 @@ $(document).ready(function(){
             });
     });
     $("#btnApiCall3").click(function(){
-            $.getJSON('http://localhost:8080/movies')
+            $.getJSON('/api/movies')
                 .done(function(response){
                     var movieList = $("<ul></ul>");
                     response.forEach(function(movie){
