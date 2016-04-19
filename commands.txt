@@ -7,5 +7,27 @@ apt-get update
 apt-get install docker-engine
 service docker start
 
-curl https://sdk.cloud.google.com | bash
+# pipe bash lol
+curl https://sdk.cloud.google.com | bash i
 gcloud components update kubectl
+
+
+# To login to the gce account and setup kubernetes to start working with the created cluster
+gcloud init
+gcloud container clusters get-credentials kubernetesdemo
+
+# Check that the basic services are installed in the gcloud kubernetes cluster
+kubectl --namespace=kube-system get services
+
+# Namespaces creation
+./createNamespaces.sh
+
+# Contexts for the namespaces
+kubectl config set-context dev --namespace=development --cluster=clusterName --user=userName
+kubectl config set-context prod --namespace=development --cluster=clusterName --user=userName
+
+# Use the dev context
+kubectl config use-context d
+
+# Deploy!
+./deployAll.sh
