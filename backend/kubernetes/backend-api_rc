@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: backend-api
-        image: eu.gcr.io/demokubernetes/backend-api:latest
+        image: eu.gcr.io/kubernetesdemo/backend-api:latest
         ports:
         - containerPort: 4567
         env:

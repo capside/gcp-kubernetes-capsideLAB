@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: eu.gcr.io/demokubernetes/mysql:latest
+        image: eu.gcr.io/kubernetesdemo/mysql:latest
         ports:
           - containerPort: 3306
         env:

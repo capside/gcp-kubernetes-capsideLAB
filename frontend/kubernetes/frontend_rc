@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: eu.gcr.io/demokubernetes/frontend:latest
+        image: eu.gcr.io/kubernetesdemo/frontend:latest
         ports:
         - containerPort: 80

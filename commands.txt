@@ -29,5 +29,23 @@ kubectl config set-context prod --namespace=development --cluster=clusterName --
 # Use the dev context
 kubectl config use-context d
 
+# Put the docker images to the google container registry
+docker build -t tagName . #for each folder of the different images
+#tagName = eu.gcr.io/kubernetesdemo/frontend for example. eu.gcr.io is the google registry for the europe region, /kubernetesdemo is the name of your project, and /frontend is the name of your image.
+# The kubernetes deploy files expect the following images to be accesible on the google account:
+# - eu.gcr.io/kubernetesdemo/frontend:latest
+# - eu.gcr.io/kubernetesdemo/backend-api:latest
+# - eu.gcr.io/kubernetesdemo/mysql:latest
+# So if your project is named otherwise, modify the kubernetes files
+gcloud docker push eu.gcr.io/kubernetesdemo/imageName
+
 # Deploy!
 ./deployAll.sh
+
+
+
+# General commands to inspect the deployment
+kubectl get rc # List deployed replicatoin controllers
+kubectl get services # List deployed services
+kubectl get pods # list deployed pods
+
