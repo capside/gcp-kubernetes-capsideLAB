@@ -8,7 +8,7 @@ apt-get install docker-engine
 service docker start
 
 # pipe bash lol
-curl https://sdk.cloud.google.com | bash i
+curl https://sdk.cloud.google.com | bash 
 gcloud components update kubectl
 
 
