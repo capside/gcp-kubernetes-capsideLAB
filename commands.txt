@@ -1,7 +1,3 @@
-
-# Docker-hub repository
-https://hub.docker.com/r/loicprieto
-
 # To login to the kubernetes cluster to start working with it
 gcloud container clusters get-credentials kubernetesdemo
 
@@ -9,7 +5,10 @@ gcloud container clusters get-credentials kubernetesdemo
 kubectl --namespace=kube-system get services
 
 # Namespaces creation
-./createNamespaces.sh
+# dev
+kubectl create -f namespace-dev.yaml
+# prod
+kubectl create -f namespace-prod.yaml
 
 # Discover cluster and user name
 cat ~/.kube/config
@@ -24,6 +23,13 @@ kubectl config use-context dev
 # Deploy!
 ./deployAll.sh
 # or use individual commands
+#Mysql
+kubectl create -f mysql/kubernetes/mysql_rc
+kubectl create -f mysql/kubernetes/mysql_service
+#Backend
+kubectl create -f backend/kubernetes/backend-api_rc
+kubectl create -f backend/kubernetes/backend-api_service
+#Frontend
 kubectl create -f frontend/kubernetes/frontend_rc
 kubectl create -f frontend/kubernetes/frontend_service
 
