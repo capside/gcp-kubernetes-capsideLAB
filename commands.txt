@@ -1,5 +1,5 @@
 # To login to the kubernetes cluster to start working with it
-gcloud container clusters get-credentials kubernetesdemo
+gcloud container clusters get-credentials kubernetesdemo --zone europe-west1-c
 
 # Check that the basic services are installed in the gcloud kubernetes cluster
 kubectl --namespace=kube-system get services
@@ -11,7 +11,7 @@ kubectl create -f namespace-dev.yaml
 kubectl create -f namespace-prod.yaml
 
 # Discover cluster and user name
-cat ~/.kube/config
+less ~/.kube/config
 
 # Contexts for the namespaces
 kubectl config set-context dev --namespace=development --cluster=clusterName --user=userName
