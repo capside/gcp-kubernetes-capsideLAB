@@ -15,7 +15,7 @@ less ~/.kube/config
 
 # Contexts for the namespaces
 kubectl config set-context dev --namespace=development --cluster=clusterName --user=userName
-kubectl config set-context prod --namespace=development --cluster=clusterName --user=userName
+kubectl config set-context prod --namespace=production --cluster=clusterName --user=userName
 
 # Use the dev context
 kubectl config use-context dev
