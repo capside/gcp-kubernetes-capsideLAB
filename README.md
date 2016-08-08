@@ -26,4 +26,4 @@ to deploy on different environments.
 
 ## Cloud provider
 
-Although Kubernetes should work on any cloud provider, this has only been tested on Google Cloud Engine, with Container Engine.
+Although Kubernetes should work on any cloud provider, this has only been tested on Google Cloud Engine with Container Engine and a self-made Kubernetes cluster in AWS.
